@@ -46,20 +46,29 @@ class MultimodalRAG(nn.Module):
             image = Image.open(file_path).convert("RGB")
             text = pytesseract.image_to_string(image)
         return text.strip()
-
-    def answer_question(self, question, file_path):        
+        
+    def answer_question(self, question, file_path):
         context = self.extract_text_from_doc(file_path)
         if not context:
             return "Could not extract text from the document."
 
-        self.tokenizer.fit([context, question])
+    # Refit tokenizer for current inputs
+        self.tokenizer.fit([question, context])
+    
+    # ✅ Reinitialize encoder and generator with updated vocab size
+        vocab_size = self.tokenizer.vocab_size()
+        self.text_encoder = TextEncoder(vocab_size, embed_dim=self.embed_size).to(self.device)
+        self.generator = Seq2SeqGenerator(vocab_size, self.embed_size, self.hidden_size, self.device).to(self.device)
+
+        self.text_encoder.tokenizer = self.tokenizer
+        self.generator.tokenizer = self.tokenizer
 
         input_text = f"question: {question} context: {context}"
         tokenized = self.tokenizer.encode(input_text)
-        print("Encoded Input:", tokenized)  # 🧪 Debug
+        print("Encoded Input:", tokenized)
         input_tensor = torch.tensor(tokenized).unsqueeze(0).to(self.device)
 
         output_ids = self.generator.generate(input_tensor)
-        print("Decoded token IDs:", output_ids[0])  # 🧪 Debug
+        print("Decoded token IDs:", output_ids[0])
         answer = self.tokenizer.decode(output_ids[0])
         return answer
