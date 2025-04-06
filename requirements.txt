@@ -1,0 +1,6 @@
+torch
+transformers
+sentence-transformers
+Pillow
+gradio
+torchvision

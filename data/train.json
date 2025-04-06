@@ -1,0 +1,17 @@
+[
+  {
+    "question": "What is the invoice number?",
+    "image": "invoice1.jpg",
+    "answer": "INV-00123"
+  },
+  {
+    "question": "What is the due date of the invoice?",
+    "image": "invoice2.jpg",
+    "answer": "15/04/2024"
+  },
+  {
+    "question": "What is the total amount due?",
+    "image": "invoice3.jpg",
+    "answer": "$1,250"
+  }
+]
