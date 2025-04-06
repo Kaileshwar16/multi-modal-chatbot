@@ -38,13 +38,14 @@ class MultimodalRAG(nn.Module):
 
     def extract_text_from_doc(self, file_path):
         text = ""
+        custom_config = r'--oem 3 --psm 6'
         if file_path.lower().endswith(".pdf"):
             pages = convert_from_path(file_path)
             for page in pages:
-                text += pytesseract.image_to_string(page)
+                text += pytesseract.image_to_string(page,config=custom_config)
         else:
             image = Image.open(file_path).convert("RGB")
-            text = pytesseract.image_to_string(image)
+            text = pytesseract.image_to_string(image,config=custom_config)
         return text.strip()
         
     def answer_question(self, question, file_path):
@@ -71,4 +72,5 @@ class MultimodalRAG(nn.Module):
         output_ids = self.generator.generate(input_tensor)
         print("Decoded token IDs:", output_ids[0])
         answer = self.tokenizer.decode(output_ids[0])
+        print("🧾 OCR Extracted Context:", context)
         return answer
