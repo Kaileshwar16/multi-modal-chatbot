@@ -1,5 +1,4 @@
-🧠 Multimodal RAG Chatbot + Invoice Extractor
-
+## 🧠 Multimodal RAG Chatbot
 This project is a Django-based application that allows users to upload a PDF document (e.g. reports, invoices) and ask questions about its content. It uses a Retrieval-Augmented Generation (RAG) pipeline to find relevant text chunks and generate answers using a pre-trained Question-Answering model.
 
 It also includes a simple invoice parser to handle invoice-like documents for data extraction tasks.
@@ -34,7 +33,7 @@ It also includes a simple invoice parser to handle invoice-like documents for da
 
 
 1. Clone the repo
-git clone https://github.com/Kaileshwar16/multi-modal-chatbot.git
+git clone https://github.com/Kaileshwar16/multi-modal-chatbot.git 
 
 cd multimodal_rag
 
