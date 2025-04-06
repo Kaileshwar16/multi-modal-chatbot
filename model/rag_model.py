@@ -25,9 +25,8 @@ class MultimodalRAG(nn.Module):
         with open(json_path, "r") as f:
             self.dataset = json.load(f)
 
-        for item in self.dataset:
-            img_name = os.path.splitext(item["image"])[0] + ".png"
-            item["image_path"] = os.path.join(image_folder, img_name)
+        for item in self.dataset: 
+                item["image_path"] = os.path.join(image_folder, item["image"])
 
         all_texts = [item["question"] for item in self.dataset]
         self.tokenizer.fit(all_texts)
@@ -40,8 +39,9 @@ class MultimodalRAG(nn.Module):
         self.retriever = Retriever(self.text_encoder, self.image_encoder, self.device)
         self.retriever.index(self.dataset)
 
-    def answer_question(self, question, image_path):
-        best_match = self.retriever.retrieve(question, [image_path])
+    def answer_question(self, question, image_path): 
+        image_paths = [item["image_path"] for item in self.dataset]
+        best_match = self.retriever.retrieve(question, image_paths)
         for item in self.dataset:
             if item["image_path"] == best_match:
                 return item["answer"]
