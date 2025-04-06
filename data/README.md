@@ -33,23 +33,23 @@ It also includes a simple invoice parser to handle invoice-like documents for da
 
 
 
-### 1. Clone the repo
+1. Clone the repo
 git clone https://github.com/Kaileshwar16/multi-modal-chatbot.git
 
 cd multimodal_rag
 
 cd rag_webapp
 
-### 2. Create a virtual environment
+2. Create a virtual environment
 python -m venv venv
 
 source venv/bin/activate
 
-### 3. Install dependencies
+3. Install dependencies
 pip install -r requirements.txt
 
-### 4. Apply migrations
+4. Apply migrations
 python manage.py migrate
 
-### 5. Run the development server
+5. Run the development server
 python manage.py runserver
