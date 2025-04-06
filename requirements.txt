@@ -4,3 +4,6 @@ sentence-transformers
 Pillow
 gradio
 torchvision
+easyocr
+opencv-python
+torch

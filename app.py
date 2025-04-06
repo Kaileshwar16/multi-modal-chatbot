@@ -11,11 +11,11 @@ sample_texts = [
     "question: What is the amount? context: The amount is ₹2000.",
     "question: When should the payment be made? context: The payment is due by 15th April.",
     "question: Who issued the invoice? context: Issued by XYZ Corporation."
-"question: What is the invoice number? context: Iwoce numeeR) INV-2025-001"
-"question: Who is the customer? context: AaumG mores Conpry e"
-"question: What is the due date? context: Due date: 10 April 2025"
-"question: What is the total amount? context: Total ₹1500 only"
-"question: What is the payment method? context: Powa Mathod: UPI"
+    "question: What is the invoice number? context: Iwoce numeeR) INV-2025-001"
+    "question: Who is the customer? context: AaumG mores Conpry e"
+    "question: What is the due date? context: Due date: 10 April 2025"
+    "question: What is the total amount? context: Total ₹1500 only"
+    "question: What is the payment method? context: Powa Mathod: UPI"
 
 ]
 rag_model.load_model(sample_texts=sample_texts)

@@ -1,0 +1,30 @@
+<!-- chatbot/templates/chatbot/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAG Chatbot</title>
+</head>
+<body>
+    <h1>Ask a Question</h1>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if answer %}
+        <p><strong>Answer:</strong> {{ answer }}</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Upload PDF:</label><br>
+        <input type="file" name="document" accept=".pdf" required><br><br>
+
+        <label>Question:</label><br>
+        <input type="text" name="question" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
