@@ -4,6 +4,8 @@ This project is a Django-based application that allows users to upload a PDF doc
 
 It also includes a simple invoice parser to handle invoice-like documents for data extraction tasks.
 
+![Multimodal RAG System Diagram](architecture.png)
+
 🚀 Features
 
     Upload any PDF
