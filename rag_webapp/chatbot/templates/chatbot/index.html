@@ -1,28 +1,101 @@
-<!-- chatbot/templates/chatbot/index.html -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>RAG Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            padding: 2rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 1rem;
+            display: block;
+            color: #555;
+        }
+
+        input[type="file"],
+        input[type="text"] {
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 0.7rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+
+        .answer {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+    </style>
 </head>
 <body>
     <h1>Ask a Question</h1>
 
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+        <div class="message error">
+            {{ error }}
+        </div>
     {% endif %}
 
     {% if answer %}
-        <p><strong>Answer:</strong> {{ answer }}</p>
+        <div class="message answer">
+            <strong>Answer:</strong> {{ answer }}
+        </div>
     {% endif %}
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <label>Upload PDF:</label><br>
-        <input type="file" name="document" accept=".pdf" required><br><br>
+        
+        <label for="document">Upload PDF</label>
+        <input type="file" name="document" id="document" accept=".pdf" required>
 
-        <label>Question:</label><br>
-        <input type="text" name="question" required><br><br>
+        <label for="question">Question</label>
+        <input type="text" name="question" id="question" placeholder="Type your question..." required>
 
         <button type="submit">Submit</button>
     </form>
