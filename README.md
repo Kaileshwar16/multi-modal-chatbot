@@ -2,7 +2,7 @@
 
 This project is a Django-based application that allows users to upload a PDF document (e.g. reports, invoices) and ask questions about its content. It uses a Retrieval-Augmented Generation (RAG) pipeline to find relevant text chunks and generate answers using a pre-trained Question-Answering model.
 
-![aipost](https://github.com/user-attachments/assets/a0cda57c-fafd-438d-a5c5-049b6702f2ac)
+
 
 It also includes a simple invoice parser to handle invoice-like documents for data extraction tasks.
 
