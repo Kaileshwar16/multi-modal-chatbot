@@ -1,7 +1,7 @@
 import gradio as gr
 from model.rag_model import MultimodalRAG
 
-# Initialize model
+
 rag_model = MultimodalRAG(device="cpu")
 sample_texts = [
     "question: What is the total amount? context: The total amount due is ₹1500.",
